@@ -1,1 +1,55 @@
+class Pig implements Runnable {
+    public void run() {
+        System.out.println("大野狼對著第三隻小豬的房子吹氣");
+        System.out.println("牠不停地吹氣又吹氣");
+        System.out.println("還是不能把房子吹倒");
+        System.out.println("大野狼非常的生氣");
+        System.out.println("牠決定要從煙囪爬進小豬的家裡");
+
+        System.out.println("小豬看到大野狼在爬煙囪");
+        System.out.println("就在壁爐上煮了一鍋水");
+
+        try {
+            for (int i = 2; i <= 10; i += 2) {
+                Thread.sleep(2000); // Sleep for 2 seconds
+                System.out.println(i + " 分鐘");
+            }
+            System.out.println("一鍋煮沸的熱水煮好了");
+
+            for (int i = 3; i <= 15; i += 3) {
+                Thread.sleep(3000); // Sleep for 3 seconds
+                System.out.println(i + " 分鐘");
+            }
+            System.out.println("大野狼爬上煙囪了");
+
+            // 等待大野狼執行結束再繼續下一步
+            Thread.sleep(3000); // Sleep for 3 seconds
+
+            // 大野狼從煙卤滑進房子裡，就被小豬煮好的水燙死了
+            System.out.println("大野狼從煙囪滑進房子裡");
+            System.out.println("就被小豬煮好的水燙死了");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Wolf implements Runnable {
+    public void run() {
+        // 大野狼的故事已在小豬的 run 方法中實現，因此這裡不需額外執行任何動作
+    }
+}
+
+public class Story {
+    public static void main(String[] args) {
+        Pig pig = new Pig();
+        Thread pigThread = new Thread(pig);
+        pigThread.start();
+        try {
+            pigThread.join(); // 等待小猪執行結束再繼續下一步
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
