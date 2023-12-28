@@ -1,1 +1,26 @@
+public class Sub implements Runnable {
+    private int n;
+    private int product = 1;
+
+    public Sub(int a) {
+        n = a;
+    }
+
+    public void run() {
+        for (int i = 1; i <= n; i++) {
+            product *= i;
+        }
+        System.out.println("Product for n=" + n + ": " + product);
+    }
+
+    public static void main(String[] args) {
+        // Create threads to calculate products for different values of n
+        Thread thread1 = new Thread(new Sub(5));
+        Thread thread2 = new Thread(new Sub(10));
+
+        // Start the threads
+        thread1.start();
+        thread2.start();
+    }
+}
 
