@@ -1,1 +1,27 @@
+---------------------------------Main.java-------------------------------------------------------------------
+public class Main {
+    public static void main(String[] args) {
+        // 使用 morning 物件啟動 3 個執行緒
+        Test morning = new Test("Good morning");
+        morning.start();
 
+        // 使用 night 物件啟動 4 個執行緒
+        Test night = new Test("Good night");
+        night.start();
+    }
+}
+---------------------------------Test.java-------------------------------------------------------------------
+public class Test extends Thread {
+    private String id;
+
+    public Test(String str) {
+        this.id = str;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 0; j < 100000000; j++);
+            System.out.println(id + " " + i);
+        }
+    }
+}
